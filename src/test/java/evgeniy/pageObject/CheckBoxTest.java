@@ -20,7 +20,7 @@ public class CheckBoxTest extends BaseElement {
     @Override
     @BeforeEach
     public void setup() {
-        super.setup();  //WebDriver webDriver = new ChromeDriver();
+        super.setup();
         checkBoxPage = new CheckBoxPage(webDriver, new WebDriverWait(webDriver, Duration.ofSeconds(5)));
         webDriver.get("https://demoqa.com/checkbox");
 
@@ -32,7 +32,7 @@ public class CheckBoxTest extends BaseElement {
     }
 
     @Test
-    public void switcherHomeTestNOTWORK(){
+    public void switcherHomeTestNOTWORK() {
         boolean isVisibility = checkBoxPage.getVisibilityDesktop();
         Assertions.assertFalse(isVisibility);
 
@@ -124,7 +124,7 @@ public class CheckBoxTest extends BaseElement {
 
 
     @Test
-    public void setCheckBoxHome(){
+    public void setCheckBoxHome() {
         checkBoxPage.setCheckBoxHome();
         List<WebElement> elements = webDriver.findElements(By.xpath("//div[@id='result']/span[@class='text-success']"));
 
@@ -133,13 +133,32 @@ public class CheckBoxTest extends BaseElement {
                 .collect(Collectors.toList());
 
         Assertions.assertTrue(collect.contains("home"));
+        Assertions.assertTrue(collect.contains("notes"));
         Assertions.assertTrue(collect.contains("workspace"));
-        Assertions.assertTrue(collect.contains("general"));
+        Assertions.assertTrue(collect.contains("react"));
+        Assertions.assertTrue(collect.contains("wordFile"));
         //You have selected : home desktop documents downloads notes commands workspace office wordFile excelFile react angular veu public private classified general
             /*
             Rest Assured почитать
             OblectMapper
              */
+    }
+
+    @Test
+    public void setCheckBoxDocuments() {
+        checkBoxPage.setSwitcherHome();
+        checkBoxPage.setSwitcherDocuments();
+        checkBoxPage.setCheckBoxDocumentsOffice();
+
+        List<WebElement> elements = webDriver.findElements(By.xpath("//span[@class='text-success']"));
+
+        List<String> collect = elements.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+
+        Assertions.assertTrue(collect.contains("office"));
+        Assertions.assertTrue(collect.contains("public"));
+        Assertions.assertTrue(collect.contains("general"));
     }
 
 }
