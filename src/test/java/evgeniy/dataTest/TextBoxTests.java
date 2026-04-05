@@ -1,4 +1,4 @@
-package evgeniy;
+package evgeniy.dataTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;

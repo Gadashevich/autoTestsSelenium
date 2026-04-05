@@ -1,5 +1,7 @@
-package evgeniy.pageObject;
+package evgeniy.pageTest;
 
+import evgeniy.pageObject.BaseElement;
+import evgeniy.pageObject.CheckBoxPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -137,11 +139,6 @@ public class CheckBoxTest extends BaseElement {
         Assertions.assertTrue(collect.contains("workspace"));
         Assertions.assertTrue(collect.contains("react"));
         Assertions.assertTrue(collect.contains("wordFile"));
-        //You have selected : home desktop documents downloads notes commands workspace office wordFile excelFile react angular veu public private classified general
-            /*
-            Rest Assured почитать
-            OblectMapper
-             */
     }
 
     @Test

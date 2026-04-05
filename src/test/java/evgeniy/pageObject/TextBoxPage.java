@@ -10,8 +10,8 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class TextBoxPage {
-    WebDriver webDriver;
-    WebDriverWait wait;
+    public WebDriver webDriver;
+    public WebDriverWait wait;
 
     By inputNameLocator = By.xpath("//input[@id='userName']");
     By inputEmailLocator = By.xpath("//input[@id='userEmail']");
@@ -84,10 +84,10 @@ public class TextBoxPage {
     }
 
     public TextBoxPage setHeaderButton() {
-        WebElement element = webDriver.findElement(buttonHeaderNameLocator);
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("https://demoqa.com/")));
+       WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buttonHeaderNameLocator));
         element.click();
+        wait.until(ExpectedConditions.urlToBe("https://demoqa.com/"));
         return this;
     }
+
 }

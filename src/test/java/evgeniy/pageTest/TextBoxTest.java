@@ -1,9 +1,14 @@
-package evgeniy.pageObject;
+package evgeniy.pageTest;
 
+import evgeniy.pageObject.BaseElement;
+import evgeniy.pageObject.TextBoxPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
@@ -38,8 +43,7 @@ public class TextBoxTest extends BaseElement {
         Assertions.assertEquals(textBoxPage.getEmail(), "Email:petr@mail.ru");
         Assertions.assertEquals(textBoxPage.getCurrentAddress(), "Current Address :currentAdd");
         Assertions.assertEquals(textBoxPage.getPermanentAddress(), "Permananet Address :permanentAdd");
-
-    }
+     }
 
     @Test
     public void testPageElementsIsNull() {
@@ -49,16 +53,16 @@ public class TextBoxTest extends BaseElement {
                 .setInputPermanentAddress("")
                 .setSubmit();
 
-        Assertions.assertThrows(org.openqa.selenium.NoSuchElementException.class, () -> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             textBoxPage.getName();
         });
-        Assertions.assertThrows(org.openqa.selenium.NoSuchElementException.class, () -> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             textBoxPage.getEmail();
         });
-        Assertions.assertThrows(org.openqa.selenium.NoSuchElementException.class, () -> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             textBoxPage.getCurrentAddress();
         });
-        Assertions.assertThrows(org.openqa.selenium.NoSuchElementException.class, () -> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             textBoxPage.getPermanentAddress();
         });
     }
@@ -72,7 +76,7 @@ public class TextBoxTest extends BaseElement {
                 .setSubmit();
 
         Assertions.assertEquals(textBoxPage.getName(), "Name:");
-        Assertions.assertThrows(org.openqa.selenium.NoSuchElementException.class, () -> {
+        Assertions.assertThrows(NoSuchElementException.class, () -> {
             textBoxPage.getEmail();
         });
         Assertions.assertEquals(textBoxPage.getCurrentAddress(), "Current Address :");
@@ -88,11 +92,10 @@ public class TextBoxTest extends BaseElement {
     }
 
     @Test
-    public void testHeaderElement() throws InterruptedException {
+    public void testHeaderElement()  {
         textBoxPage.setHeaderButton();
 
         Assertions.assertEquals(webDriver.getCurrentUrl(), "https://demoqa.com/");
     }
-
 
 }
